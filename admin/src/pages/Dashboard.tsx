@@ -1,9 +1,12 @@
 import { Layout, Menu } from "antd";
 import { Content, Header } from "antd/es/layout/layout";
 import Sider from "antd/es/layout/Sider";
-import { FileIcon, House, School } from "lucide-react";
+import { FileIcon, House, University } from "lucide-react";
+import { Outlet, useNavigate } from "react-router-dom";
 
 const Dashboard: React.FC = () => {
+  const navigate = useNavigate();
+
   return (
     <Layout className="w-full h-screen">
       <Header className="w-full bg-white flex justify-between">
@@ -25,8 +28,11 @@ const Dashboard: React.FC = () => {
               },
               {
                 key: "universities",
-                icon: <School />,
+                icon: <University />,
                 label: "Universities",
+                onClick: () => {
+                  navigate("/dashboard/university");
+                },
               },
               {
                 key: "question_papers",
@@ -36,7 +42,9 @@ const Dashboard: React.FC = () => {
             ]}
           />
         </Sider>
-        <Content>some content</Content>
+        <Content>
+          <Outlet />
+        </Content>
       </Layout>
     </Layout>
   );

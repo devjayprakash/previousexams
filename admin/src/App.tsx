@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LoginPage from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import RestrictedRoute from "./components/RestrictedRoute";
+import UniversityPage from "./pages/University";
 
 function App() {
   return (
@@ -15,7 +16,9 @@ function App() {
               <Dashboard />
             </RestrictedRoute>
           }
-        />
+        >
+          <Route path="university" element={<UniversityPage />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
