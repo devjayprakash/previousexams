@@ -3,6 +3,7 @@
   "workspaces": [
     "backend",
     "frontend",
-    "admin"
+    "admin",
+    "database"
   ]
 }
