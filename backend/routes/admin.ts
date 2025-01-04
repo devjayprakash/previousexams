@@ -24,6 +24,7 @@ adminRouter.post("/create", async (req, res, next) => {
         name: name,
         email: email,
         password: hash,
+        updatedAt: new Date(),
       },
     });
 
