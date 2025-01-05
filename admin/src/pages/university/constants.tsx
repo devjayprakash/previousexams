@@ -1,6 +1,7 @@
 import { Button } from 'antd'
+import { NavigateFunction } from 'react-router-dom'
 
-export const universitiesTableColumn = [
+export const universitiesTableColumn = (navigate: NavigateFunction) => [
     {
         title: 'Name',
         dataIndex: 'name',
@@ -35,7 +36,12 @@ export const universitiesTableColumn = [
         title: 'Actions',
         render: () => (
             <div className="flex gap-2">
-                <Button type="primary" href="details">
+                <Button
+                    type="primary"
+                    onClick={() => {
+                        navigate('/dashboard/university/:something')
+                    }}
+                >
                     Show details
                 </Button>
             </div>

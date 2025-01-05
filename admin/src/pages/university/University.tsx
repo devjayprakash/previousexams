@@ -4,11 +4,13 @@ import { useState } from 'react'
 import AddUniversityModal from './AddUniversityModal'
 import { universitiesTableColumn } from './constants'
 import useUniversities from '../hooks/useUniversities'
+import { useNavigate } from 'react-router-dom'
 
 const UniversityPage: React.FC = () => {
     const { universities, fetchUniversitiesError } = useUniversities()
     const [showCreateUniversityModal, setShowCreateUniversityModal] =
         useState(false)
+    const navigate = useNavigate()
 
     return (
         <div className="p-3">
@@ -39,7 +41,7 @@ const UniversityPage: React.FC = () => {
 
             <Table
                 className="mt-3"
-                columns={universitiesTableColumn}
+                columns={universitiesTableColumn(navigate)}
                 dataSource={universities}
             />
 
