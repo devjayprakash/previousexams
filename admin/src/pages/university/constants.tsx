@@ -35,7 +35,9 @@ export const universitiesTableColumn = [
         title: 'Actions',
         render: () => (
             <div className="flex gap-2">
-                <Button type="primary">Show details</Button>
+                <Button type="primary" href="details">
+                    Show details
+                </Button>
             </div>
         ),
     },

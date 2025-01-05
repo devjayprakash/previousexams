@@ -3,8 +3,8 @@ import { Button, Layout, Menu } from 'antd'
 import { Content, Header } from 'antd/es/layout/layout'
 import Sider from 'antd/es/layout/Sider'
 import {
-    CircleChevronLeft,
-    CircleChevronRight,
+    ChevronLeft,
+    ChevronRight,
     FileIcon,
     House,
     University,
@@ -24,51 +24,51 @@ const Dashboard: React.FC = () => {
             </Header>
             <Layout>
                 <Sider
-                    className="bg-slate-50"
+                    className="bg-slate-50 h-full"
                     collapsible
                     collapsed={collapsed}
                     trigger={null}
                 >
-                    <Menu
-                        mode="inline"
-                        className="h-full bg-slate-50 mt-3"
-                        theme="light"
-                        defaultOpenKeys={['home']}
-                        items={[
-                            {
-                                key: 'home',
-                                icon: <House />,
-                                label: 'Home',
-                            },
-                            {
-                                key: 'universities',
-                                icon: <University />,
-                                label: 'Universities',
-                                onClick: () => {
-                                    navigate('/dashboard/university')
+                    <div className="h-full flex flex-col justify-between">
+                        <Menu
+                            mode="inline"
+                            className="bg-slate-50 mt-3"
+                            theme="light"
+                            defaultOpenKeys={['home']}
+                            items={[
+                                {
+                                    key: 'home',
+                                    icon: <House />,
+                                    label: 'Home',
                                 },
-                            },
-                            {
-                                key: 'question_papers',
-                                icon: <FileIcon />,
-                                label: 'Question Papers',
-                            },
-                        ]}
-                    />
+                                {
+                                    key: 'universities',
+                                    icon: <University />,
+                                    label: 'Universities',
+                                    onClick: () => {
+                                        navigate('/dashboard/university')
+                                    },
+                                },
+                                {
+                                    key: 'question_papers',
+                                    icon: <FileIcon />,
+                                    label: 'Question Papers',
+                                },
+                            ]}
+                        />
+                        <div
+                            className="flex justify-center p-2 border border-gray-200 m-3 rounded-md cursor-pointer"
+                            onClick={() => setCollapsed(!collapsed)}
+                        >
+                            {collapsed ? (
+                                <ChevronRight size={16} />
+                            ) : (
+                                <ChevronLeft size={16} />
+                            )}
+                        </div>
+                    </div>
                 </Sider>
                 <Content className="p-2">
-                    <Button
-                        className="flex items-center justify-center"
-                        type="text"
-                        icon={
-                            collapsed ? (
-                                <CircleChevronRight />
-                            ) : (
-                                <CircleChevronLeft />
-                            )
-                        }
-                        onClick={() => setCollapsed(!collapsed)}
-                    />
                     <Outlet />
                 </Content>
             </Layout>

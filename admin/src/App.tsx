@@ -3,6 +3,7 @@ import LoginPage from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import RestrictedRoute from './components/RestrictedRoute'
 import UniversityPage from './pages/university/University'
+import UniversityDetails from './pages/university/details/UniverstiyDetails'
 
 function App() {
     return (
@@ -17,6 +18,10 @@ function App() {
                         </RestrictedRoute>
                     }
                 >
+                    <Route
+                        path="university/:university_id"
+                        element={<UniversityDetails />}
+                    />
                     <Route path="university" element={<UniversityPage />} />
                 </Route>
             </Routes>
