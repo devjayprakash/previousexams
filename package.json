@@ -1,9 +1,15 @@
 {
-  "private": true,
-  "workspaces": [
-    "backend",
-    "frontend",
-    "admin",
-    "database"
-  ]
+    "private": true,
+    "workspaces": [
+        "backend",
+        "frontend",
+        "admin",
+        "database"
+    ],
+    "scripts": {
+        "prettier": "prettier --write ."
+    },
+    "devDependencies": {
+        "prettier": "^3.4.2"
+    }
 }

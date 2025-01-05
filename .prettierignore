@@ -1,0 +1,6 @@
+./database/prisma
+node_modules
+frontend/dist
+frontend/android
+frontend/ios
+admin/dist
