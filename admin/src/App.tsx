@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LoginPage from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import RestrictedRoute from "./components/RestrictedRoute";
-import UniversityPage from "./pages/University";
+import UniversityPage from "./pages/university/University";
 
 function App() {
   return (
