@@ -1,8 +1,7 @@
-import { AxiosError } from 'axios'
-import { useEffect, useState } from 'react'
+import { useQuery } from 'react-query'
 import api from '../../utils/axios'
 
-interface University {
+export interface University {
     id: string
     name: string
     state: string
@@ -12,28 +11,28 @@ interface University {
     tier: string
 }
 
-const useUniversities = () => {
-    const [fetchUniversitiesError, setFetchUniversitiesError] = useState<
-        string | null
-    >(null)
+export const useUniversities = () => {
+    const {
+        isLoading: universityLoading,
+        error: universityError,
+        data: universities,
+    } = useQuery<University[]>('universities', async () =>
+        api
+            .get('/university/allUniversities')
+            .then((res) => res.data.universities)
+    )
 
-    const [universities, setUniversities] = useState<University[]>([])
-
-    useEffect(() => {
-        const fetchUniversities = async () => {
-            try {
-                const response = await api.get('/university/allUniversities')
-                setUniversities(response.data.universities)
-            } catch (error) {
-                if (error instanceof AxiosError) {
-                    setFetchUniversitiesError(error.message)
-                }
-            }
-        }
-        fetchUniversities()
-    }, [])
-
-    return { universities, fetchUniversitiesError }
+    return { universities, universityLoading, universityError }
 }
 
-export default useUniversities
+export const useSingleUniversity = (university_id: string) => {
+    const { data, isLoading, error } = useQuery<University>(
+        ['university', university_id],
+        async () =>
+            api
+                .get(`/university/${university_id}`)
+                .then((res) => res.data.university)
+    )
+
+    return { data, isLoading, error }
+}

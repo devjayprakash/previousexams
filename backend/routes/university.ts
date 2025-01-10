@@ -53,7 +53,6 @@ universityRouter.post('/create', isAdminValid, async (req, res, next) => {
 
 universityRouter.get(
     '/allUniversities',
-    // @ts-ignore
     isAdminValid,
     async (_req, res, next) => {
         try {
@@ -61,6 +60,28 @@ universityRouter.get(
             res.send({
                 result: true,
                 universities,
+            })
+        } catch (error) {
+            next(error)
+        }
+    }
+)
+
+universityRouter.get(
+    '/:university_id',
+    isAdminValid,
+    async (req, res, next) => {
+        try {
+            const { university_id } = req.params
+            const university = await prisma.university.findUnique({
+                where: {
+                    id: university_id,
+                },
+            })
+
+            res.send({
+                result: true,
+                university,
             })
         } catch (error) {
             next(error)

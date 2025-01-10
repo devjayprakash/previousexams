@@ -4,28 +4,33 @@ import Dashboard from './pages/Dashboard'
 import RestrictedRoute from './components/RestrictedRoute'
 import UniversityPage from './pages/university/University'
 import UniversityDetails from './pages/university/details/UniverstiyDetails'
+import { QueryClient, QueryClientProvider } from 'react-query'
+
+const reactQueryClient = new QueryClient()
 
 function App() {
     return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<LoginPage />} />
-                <Route
-                    path="/dashboard"
-                    element={
-                        <RestrictedRoute>
-                            <Dashboard />
-                        </RestrictedRoute>
-                    }
-                >
+        <QueryClientProvider client={reactQueryClient}>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<LoginPage />} />
                     <Route
-                        path="university/:university_id"
-                        element={<UniversityDetails />}
-                    />
-                    <Route path="university" element={<UniversityPage />} />
-                </Route>
-            </Routes>
-        </BrowserRouter>
+                        path="/dashboard"
+                        element={
+                            <RestrictedRoute>
+                                <Dashboard />
+                            </RestrictedRoute>
+                        }
+                    >
+                        <Route
+                            path="university/:university_id"
+                            element={<UniversityDetails />}
+                        />
+                        <Route path="university" element={<UniversityPage />} />
+                    </Route>
+                </Routes>
+            </BrowserRouter>
+        </QueryClientProvider>
     )
 }
 

@@ -29,8 +29,11 @@ const Dashboard: React.FC = () => {
     return (
         <Layout className="w-full h-screen">
             <Header className="w-full bg-white flex justify-between border-gray-200 border-b">
-                <div className="text-xl h-full flex items-center px-3">
+                <div className="text-xl h-full flex items-center px-3 gap-2">
                     previousexams
+                    <div className="bg-blue-500 text-white px-2 text-xs rounded-full">
+                        admin
+                    </div>
                 </div>
             </Header>
             <Layout>

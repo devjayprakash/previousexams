@@ -17,13 +17,25 @@ model Admin {
 }
 
 model University {
-  id                String   @id @default(cuid())
+  id                String    @id @default(cuid())
   name              String
   establishmentYear String
   state             String
   country           String
   pinCode           String
   tier              String?
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  Courses           Courses[]
+}
+
+model Courses {
+  id           String     @id @default(cuid())
+  name         String
+  semesters    Int
+  description  String
+  universityId String
+  university   University @relation(fields: [universityId], references: [id])
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
 }

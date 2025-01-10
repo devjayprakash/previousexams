@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken'
 import { JWT_SECRET } from '../constants'
 import prisma from 'database'
 
-export const isAdminValid = async (
+export const isAdminValid: any = async (
     req: Request,
     res: Response,
     next: NextFunction
