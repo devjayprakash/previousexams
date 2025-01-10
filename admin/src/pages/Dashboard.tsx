@@ -5,7 +5,6 @@ import Sider from 'antd/es/layout/Sider'
 import {
     ChevronLeft,
     ChevronRight,
-    FileIcon,
     LayoutDashboard,
     University,
 } from 'lucide-react'
@@ -62,11 +61,6 @@ const Dashboard: React.FC = () => {
                                     onClick: () => {
                                         navigate('/dashboard/university')
                                     },
-                                },
-                                {
-                                    key: 'question_papers',
-                                    icon: centeredIcon(<FileIcon />),
-                                    label: 'Question Papers',
                                 },
                             ]}
                         />

@@ -30,12 +30,23 @@ model University {
 }
 
 model Courses {
-  id           String     @id @default(cuid())
-  name         String
-  semesters    Int
-  description  String
-  universityId String
-  university   University @relation(fields: [universityId], references: [id])
-  createdAt    DateTime   @default(now())
-  updatedAt    DateTime   @updatedAt
+  id            String          @id @default(cuid())
+  name          String
+  semesters     Int
+  description   String
+  universityId  String
+  university    University      @relation(fields: [universityId], references: [id])
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  QuestionPaper QuestionPaper[]
+}
+
+model QuestionPaper {
+  id        String   @id @default(cuid())
+  name      String
+  courseId  String
+  course    Courses  @relation(fields: [courseId], references: [id])
+  file_url  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
