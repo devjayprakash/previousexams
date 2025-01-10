@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from 'react-query'
-import api from '../../utils/axios'
+import api from '../utils/axios'
 
 interface Course {
     name: string

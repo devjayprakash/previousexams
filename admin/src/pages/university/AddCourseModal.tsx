@@ -1,7 +1,7 @@
 import { Modal, Alert, Input, Form } from 'antd'
 import { useForm } from 'antd/es/form/Form'
 import TextArea from 'antd/es/input/TextArea'
-import { useCreateCourse } from '../hooks/useCourses'
+import { useCreateCourse } from '../../hooks/useCourses'
 
 type Props = {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

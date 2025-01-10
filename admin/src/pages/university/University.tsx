@@ -3,7 +3,7 @@ import { University } from 'lucide-react'
 import { useState } from 'react'
 import AddUniversityModal from './AddUniversityModal'
 import { universitiesTableColumn } from './constants'
-import { useUniversities } from '../hooks/useUniversities'
+import { useUniversities } from '../../hooks/useUniversities'
 import { useNavigate } from 'react-router-dom'
 
 const UniversityPage: React.FC = () => {

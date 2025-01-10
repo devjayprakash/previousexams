@@ -1,5 +1,6 @@
-import { Button, Card, Form, Input, Modal, Typography } from 'antd'
+import { Button, Card, Typography } from 'antd'
 import { useState } from 'react'
+import CreateQuestionPaperModal from './CreateQuestionPaperModal'
 
 const QuestionPaper: React.FC = () => {
     const [showCreateModal, setShowCreateModal] = useState(false)
@@ -9,25 +10,20 @@ const QuestionPaper: React.FC = () => {
             <Card>
                 <Typography.Title level={3}>Question Paper</Typography.Title>
                 <div className="flex justify-end">
-                    <Button type="primary">Create Question Paper</Button>
+                    <Button
+                        onClick={() => {
+                            setShowCreateModal(true)
+                        }}
+                        type="primary"
+                    >
+                        Create Question Paper
+                    </Button>
                 </div>
             </Card>
-            <Modal
-                title={'Create Question Paper'}
-                open={showCreateModal}
-                onCancel={() => {
-                    setShowCreateModal(false)
-                }}
-            >
-                <Form>
-                    <Form.Item name={'name'} label={'Name'}>
-                        <Input />
-                    </Form.Item>
-                    <Form.Item name={'courseId'} label={'Course'}>
-                        <Input />
-                    </Form.Item>
-                </Form>
-            </Modal>
+            <CreateQuestionPaperModal
+                showCreateModal={showCreateModal}
+                setShowCreateModal={setShowCreateModal}
+            />
         </>
     )
 }

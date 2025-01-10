@@ -1,5 +1,5 @@
 import { useQuery } from 'react-query'
-import api from '../../utils/axios'
+import api from '../utils/axios'
 
 export interface University {
     id: string

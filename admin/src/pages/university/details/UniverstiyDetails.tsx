@@ -1,10 +1,10 @@
-import { useSingleUniversity } from '../../hooks/useUniversities'
 import { useParams } from 'react-router-dom'
 import { Card, Descriptions, Tabs } from 'antd'
 import { University as UniversityIcon } from 'lucide-react'
 import Loading from '../../../components/Loading'
 import QuestionPaper from '../../question-paper/QuestionPaper'
 import Courses from '../../courses/Courses'
+import { useSingleUniversity } from '../../../hooks/useUniversities'
 
 const UniversityDetails: React.FC = () => {
     const { university_id } = useParams()
